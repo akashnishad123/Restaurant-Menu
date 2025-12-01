@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YumYatra</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #f5f7fa, #e4e7eb);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      color: #000;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 2px;
+      width: 100%;
+      height: 3px;
+      background-color: rgb(248, 82, 82);
+      transform: scaleX(0);
+      transition: transform 0.5s ease;
+      transform-origin: right;
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+
+    /* Footer Styles */
+    .footer {
+      background-color: #ffffffae;
+      color: black;
+      padding-top: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .footer h5 {
+      position: relative;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .footer h5::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: rgb(230, 230, 29);
+      border-radius: 3px;
+    }
+
+    .footer-links a {
+      display: block;
+      color: black;
+      text-decoration: none;
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: darkblue;
+      padding-left: 5px;
+    }
+
+    .contact-info p {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .contact-info i {
+      margin-right: 10px;
+      margin-top: 5px;
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      background: #3498db;
+      transform: translateY(-3px);
+    }
+
+    .newsletter-form {
+      display: flex;
+      margin-top: 20px;
+    }
+
+    .newsletter-form input {
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px 0 0 5px;
+      flex: 1;
+      outline: none;
+    }
+
+    .newsletter-form button {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+      background: #2980b9;
+    }
+
+    .copyright {
+      background: #f5f7fa;
+      padding: 20px 0;
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .copyright a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+
+    .back-to-top {
+      position: absolute;
+      right: 20px;
+      top: 260px;
+      background: white;
+      color: black;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .back-to-top:hover {
+      background: black;
+      color: white;
+      transform: translateY(-3px);
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header Start-->
+
+
+    <div class="row upper text-dark p-3" style="background-color: #FDFAF6;">
+      <div class="col-12 col-sm-6 text-center text-danger fs-5 mt-1 fw-bold"> “A journey of flavors, one bite at a time.”
+      </div>
+      <div class="col-12 col-sm-2 mt-3 fs-5"></div>
+      <div class="col-12 col-sm-4  fs-5">
+        <button type="button" class="btn btn-warning p-1 fw-bold mx-3" data-bs-target="#exampleModal">
+          <a href="registration.html" class="text-decoration-none w-50 text-dark"><i class="fa-solid fa-user-plus"></i> SIGN UP</a>
+        </button>
+        <button type="button" class="btn btn-warning w-25 p-1 fw-bold mx-3">
+          <a href="login.html" class="text-decoration-none text-dark"><i class="fa-solid fa-right-to-bracket"></i> LOGIN</a>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+          <a class="navbar-brand mx-2" href="#"><img src="images/YumYatra Logo_ A Journey of Flavors.png" alt=""
+              height="70px"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 ms-auto mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active mx-3 fw-bold" aria-current="page" href="Index.html"><i class="fa-solid fa-house"></i> Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active mx-3 fw-bold" aria-current="page" href="category.html"><i class="fa-solid fa-layer-group"></i> Category</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active mx-3 fw-bold" aria-current="page" href="details.html"><i class="fa-solid fa-circle-info"></i> Details</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active mx-3 fw-bold" aria-current="page" href="aboutUs.html"><i class="fa-solid fa-eject"></i> About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active mx-3 fw-bold" aria-current="page" href="ContactUs.html"><i class="fa-regular fa-address-book"></i> Contact Us</a>
+              </li>
+
+            </ul>
+            <form class="d-flex">
+              <button type="button" class="btn btn-warning fw-bold mx-3" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                Enquiry
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+    <!-- Header end -->
+
+    <!-- slider Start -->
+
+    <div class="container m-0 p-0">
+      <div class="row">
+
+        <div id="carouselExampleDark" class="carousel carousel-dark slide m-0 p-0">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+              <img src="images/Food22.jpg" class="d-block w-100 opacity-75" alt="..." height="600px">
+              <div class="carousel-caption d-none d-md-block" style="margin-bottom: 230px;">
+                <h5><span class="text-danger p-2 rounded">First slide label</span></h5>
+                <p>Some representative placeholder content for the first slide.</p>
+              </div>
+            </div>
+            <div class="carousel-item active" data-bs-interval="2000">
+              <img src="images/Food6.jpg" class="d-block w-100 opacity-75" alt="..." height="600px">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Second slide label</h5>
+                <p>Some representative placeholder content for the second slide.</p>
+              </div>
+            </div>
+            <div class="carousel-item active" data-bs-interval="2000">
+              <img src="images/food19.jpg" class="d-block w-100" alt="..." height="600px">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Third slide label</h5>
+                <p>Some representative placeholder content for the third slide.</p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+    <!-- slider end -->
+
+    <div class="container mt-4">
+      <h1 class="mb-3 text-center text-danger fw-bold fs-2">Latest Recipes</h1>
+      <div class="row">
+
+        <div class="col-sm-6 p-3">
+          <img src="images/food12.jpg" alt="" height="530px" width="100%">
+        </div>
+        <div class="col-sm-6 p-3">
+          <div class="row">
+            <img src="images/food13.jpg" alt="" height="250px">
+          </div>
+          <div class="row mt-4">
+            <img src="images/food14.jpg" alt="" height="256px">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="container">
+      <h1 class="mb-4 mt-4 text-center text-danger fw-bold fs-2">Budget-Friendly Summer Recipes</h1>
+      <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+
+        <!-- Breakfast -->
+        <div class="col">
+          <a href="#breakfastModal" data-bs-toggle="modal" class="text-decoration-none">
+            <div class="card h-100 shadow-sm border-0">
+              <img src="images/break.jpg" class="card-img-top  p-3" alt="Breakfast">
+              <div class="card-body text-center">
+                <h5 class="card-title text-warning">Breakfast</h5>
+                <p class="card-text text-muted">Healthy bowls, smoothies, pancakes, eggs and more.</p>
+                <p class="text-muted">$9.93 recipe / $2.48 serving</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Desserts -->
+        <div class="col">
+          <a href="#dessertModal" data-bs-toggle="modal" class="text-decoration-none">
+            <div class="card h-100 shadow-sm border-0">
+              <img src="images/food19.jpg" class="card-img-top p-3" alt="Desserts">
+              <div class="card-body text-center">
+
+                <h5 class="card-title text-warning">Desserts</h5>
+                <p class="card-text text-muted">Cakes, pastries, puddings, ice creams & chocolate delights.</p>
+                <p class="text-muted">$11.37 recipe / $1.42 serving</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Vegan -->
+        <div class="col">
+          <a href="#veganModal" data-bs-toggle="modal" class="text-decoration-none">
+            <div class="card h-100 shadow-sm border-0">
+              <img src="images/vegan.jpg" class="card-img-top  p-3" alt="Vegan">
+              <div class="card-body text-center">
+
+                <h5 class="card-title text-warning">Vegan</h5>
+                <p class="card-text text-muted">Plant-based recipes with wholesome flavors.</p>
+                <p class="text-muted">$1.58 recipe / $0.39 serving</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Lunch -->
+        <div class="col">
+          <a href="#lunchModal" data-bs-toggle="modal" class="text-decoration-none">
+            <div class="card h-100 shadow-sm border-0">
+              <img src="images/lunch1.jpg" class="card-img-top  p-3" alt="Lunch">
+              <div class="card-body text-center">
+                <h5 class="card-title text-warning">Lunch</h5>
+                <p class="card-text text-muted">Wholesome plates, rice bowls, curries and breads.</p>
+                <p class="text-muted">$5.39 recipe / $0.67 serving</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+
+      </div>
+    </div>
+
+    <!-- Category Section -->
+
+
+
+
+    <!-- Popular Categories -->
+
+    <div class="container m-0 p-0">
+      <div class="row">
+
+        <div class="my-5">
+          <div class="container">
+            <h2 class="text-center section-title text-danger fw-bold">Popular Categories</h2>
+            <p class="text-center text-muted mb-5">Our most visited recipe collections</p>
+
+            <div class="row g-4 justify-content-center">
+              <div class="col-lg-2 col-md-4 col-6 text-center">
+                <div class="bg-white rounded-circle p-4 mx-auto shadow-sm" style="width: 120px; height: 120px;">
+                  <i class="bi bi-cup-hot fs-1 text-primary"></i>
+                </div>
+                <h5 class="mt-3">Quick Meals</h5>
+                <small class="text-muted">45 recipes</small>
+              </div>
+              <div class="col-lg-2 col-md-4 col-6 text-center">
+                <div class="bg-white rounded-circle p-4 mx-auto shadow-sm" style="width: 120px; height: 120px;">
+                  <i class="bi bi-basket fs-1 text-success"></i>
+                </div>
+                <h5 class="mt-3">Healthy</h5>
+                <small class="text-muted">92 recipes</small>
+              </div>
+              <div class="col-lg-2 col-md-4 col-6 text-center">
+                <div class="bg-white rounded-circle p-4 mx-auto shadow-sm" style="width: 120px; height: 120px;">
+                  <i class="bi bi-fire fs-1 text-danger"></i>
+                </div>
+                <h5 class="mt-3">Spicy</h5>
+                <small class="text-muted">37 recipes</small>
+              </div>
+              <div class="col-lg-2 col-md-4 col-6 text-center">
+                <div class="bg-white rounded-circle p-4 mx-auto shadow-sm" style="width: 120px; height: 120px;">
+                  <i class="bi bi-bicycle fs-1 text-info"></i>
+                </div>
+                <h5 class="mt-3">Low Carb</h5>
+                <small class="text-muted">63 recipes</small>
+              </div>
+              <div class="col-lg-2 col-md-4 col-6 text-center">
+                <div class="bg-white rounded-circle p-4 mx-auto shadow-sm" style="width: 120px; height: 120px;">
+                  <i class="bi bi-globe fs-1 text-warning"></i>
+                </div>
+                <h5 class="mt-3">International</h5>
+                <small class="text-muted">88 recipes</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Popular Categories -->
+
+    <div class="container">
+      <h1 class="text-danger text-center fs-2 fw-bold mb-5">Recipe Categories</h1>
+
+      <div class="row justify-content-center d-flex" style="margin-top: 20px; margin-bottom: 20px; ">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-1">
+          <img src="images/Food15.jpg" class="rounded-circle img-fluid" alt="">
+          <p class="mt-2 text-center">VEGAN</p>
+        </div>
+        <div class="col-sm-1">
+          <img src="images/food19.jpg" class="rounded-circle img-fluid" alt="">
+          <p class="mt-2 text-center">DESSERT</p>
+        </div>
+        <div class="col-sm-1">
+          <img src="images/food22.jpg" class="rounded-circle img-fluid" alt="">
+          <p class="mt-2 text-center">CHICKEN</p>
+        </div>
+        <div class="col-sm-1">
+          <img src="images/Food2.jpg" class="rounded-circle img-fluid" alt="">
+          <p class="mt-2 text-center">SALAD</p>
+        </div>
+        <div class="col-sm-1">
+          <img src="images/food19.jpg" class="rounded-circle img-fluid" alt="">
+          <p class="mt-2 text-center">CAKE</p>
+        </div>
+        <div class="col-sm-1">
+          <img src="images/food20.jpg" class="rounded-circle img-fluid" alt="">
+          <p class="mt-2 text-center">PASTA</p>
+        </div>
+        <div class="col-sm-1">
+          <img src="images/food16.jpg" class="rounded-circle img-fluid" alt="">
+          <p class="mt-2 text-center">QUICK</p>
+        </div>
+        <div class="col-sm-1">
+          <img src="images/food17.jpg" class="rounded-circle img-fluid" alt="">
+          <p class="mt-2 text-center">DESSERT</p>
+        </div>
+        <div class="col-sm-1"></div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+
+          <!-- Breakfast -->
+          <div class="col">
+            <a href="#breakfastModal" data-bs-toggle="modal" class="text-decoration-none">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="images/break.jpg" class="card-img-top  p-3" alt="Breakfast">
+                <div class="card-body text-center">
+                  <h5 class="card-title text-warning">Breakfast</h5>
+                  <p class="card-text text-muted">Healthy bowls, smoothies, pancakes, eggs and more.</p>
+                  <p class="text-muted">$9.93 recipe / $2.48 serving</p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Desserts -->
+          <div class="col">
+            <a href="#dessertModal" data-bs-toggle="modal" class="text-decoration-none">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="images/food19.jpg" class="card-img-top p-3" alt="Desserts">
+                <div class="card-body text-center">
+                    
+                  <h5 class="card-title text-warning">Desserts</h5>
+                  <p class="card-text text-muted">Cakes, pastries, puddings, ice creams & chocolate delights.</p>
+                  <p class="text-muted">$11.37 recipe / $1.42 serving</p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Vegan -->
+          <div class="col">
+            <a href="#veganModal" data-bs-toggle="modal" class="text-decoration-none">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="images/vegan.jpg" class="card-img-top  p-3" alt="Vegan">
+                <div class="card-body text-center">
+                   
+                  <h5 class="card-title text-warning">Vegan</h5>
+                  <p class="card-text text-muted">Plant-based recipes with wholesome flavors.</p>
+                  <p class="text-muted">$1.58 recipe / $0.39 serving</p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Lunch -->
+          <div class="col">
+            <a href="#lunchModal" data-bs-toggle="modal" class="text-decoration-none">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="images/lunch1.jpg" class="card-img-top  p-3" alt="Lunch">
+                <div class="card-body text-center">
+                  <h5 class="card-title text-warning">Lunch</h5>
+                  <p class="card-text text-muted">Wholesome plates, rice bowls, curries and breads.</p>
+                  <p class="text-muted">$5.39 recipe / $0.67 serving</p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Dinner -->
+          <div class="col">
+            <a href="#dinnerModal" data-bs-toggle="modal" class="text-decoration-none">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="images/dinner.jpg" class="card-img-top  p-3" alt="Dinner">
+                <div class="card-body text-center">
+                  <h5 class="card-title text-warning">Dinner</h5>
+                  <p class="card-text text-muted">Light and comforting meals for the evening.</p>
+                  <p class="text-muted">$1.46 recipe / $0.36 serving</p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Snacks -->
+          <div class="col">
+            <a href="#snackModal" data-bs-toggle="modal" class="text-decoration-none">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="images/snaks.jpg" class="card-img-top p-3" alt="Snacks">
+                <div class="card-body text-center">
+                  <h5 class="card-title text-warning">Snacks</h5>
+                  <p class="card-text text-muted">Crispy bites, quick nibbles, sandwiches and fritters.</p>
+                  <p class="text-muted">$11.37 recipe / $1.42 serving</p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Beverages -->
+          <div class="col">
+            <a href="#beverageModal" data-bs-toggle="modal" class="text-decoration-none">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="images/beverages.jpg" class="card-img-top p-3" alt="Beverages">
+                <div class="card-body text-center">
+                  <h5 class="card-title text-warning">Beverages</h5>
+                  <p class="card-text text-muted">Juices, smoothies, mocktails, shakes & teas.</p>
+                  <p class="text-muted">$10.40 recipe / $2.60 serving</p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Salads -->
+          <div class="col">
+            <a href="#saladModal" data-bs-toggle="modal" class="text-decoration-none">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="images/salad.jpg" class="card-img-top  p-3" alt="Salads">
+                <div class="card-body text-center">
+                  <h5 class="card-title text-warning">Salads</h5>
+                  <p class="card-text text-muted">Fresh greens, fruit salads & healthy colorful bowls.</p>
+                  <p class="text-muted">$6.54 recipe / $1.64 serving</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+        
+
+        </div>
+      </div>
+
+
+
+
+    <!-- Footer Section -->
+
+    <div class="container m-0 p-0 mt-5">
+      <div class="row">
+        <footer class="footer">
+          <a href="#" class="back-to-top">
+            <i class="bi bi-arrow-up"></i>
+          </a>
+          <div class="container">
+            <div class="row g-1">
+              <div class="col-lg-3 col-md-6">
+                <h5>About Company</h5>
+                <p>“Yum Yatra is your perfect food companion, bringing together delicious recipes, cooking tips, and foodie experiences. From traditional flavors to modern delights, we make your food journey simple, fun, and flavorful.”</p>
+                <div class="social-icons mt-4">
+                  <a href="#"><i class="bi bi-facebook"></i></a>
+                  <a href="#"><i class="bi bi-twitter"></i></a>
+                  <a href="#"><i class="bi bi-instagram"></i></a>
+                  <a href="#"><i class="bi bi-linkedin"></i></a>
+                  <a href="#"><i class="bi bi-youtube"></i></a>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                <h5>Quick Links</h5>
+                <div class="footer-links">
+                  <a href="#"><i class="bi bi-chevron-right me-2"></i> Home</a>
+                  <a href="#"><i class="bi bi-chevron-right me-2"></i> About Us</a>
+                  <a href="#"><i class="bi bi-chevron-right me-2"></i> Category</a>
+                  <a href="#"><i class="bi bi-chevron-right me-2"></i> Details</a>
+                  <a href="#"><i class="bi bi-chevron-right me-2"></i> Contact</a>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                <h5>Contact Us</h5>
+                <div class="contact-info">
+                  <p>
+                    <i class="bi bi-geo-alt text-primary"></i>
+                    <span>123 Business Avenue, Suite 100<br>San Francisco, CA 94107</span>
+                  </p>
+                  <p>
+                    <i class="bi bi-telephone text-primary"></i>
+                    <span>+1 (555) 123-4567</span>
+                  </p>
+                  <p>
+                    <i class="bi bi-envelope text-primary"></i>
+                    <span>info@company.com</span>
+                  </p>
+
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                <h5>Newsletter</h5>
+                <p>Subscribe to our newsletter for the latest updates and offers.</p>
+                <div class="newsletter-form">
+                  <input type="email" placeholder="Your email address">
+                  <button type="submit"><i class="bi bi-send"></i></button>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 m-0 p-0">
+                <div class="copyright">
+                  <p class="mb-0">© 2025 YumYatra. All Rights Reserved. | Designed with <i
+                      class="bi bi-heart-fill text-danger"></i> by Our Team</p>
+                  <p class="mb-0 mt-2">
+                    <a href="#">Privacy Policy</a> |
+                    <a href="#">Terms of Service</a> |
+                    <a href="developer.html">Developer</a>
+
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+<!--Modal strat-->
+
+<!-- Button trigger modal
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="exampleModalLabel">Enquiry for YumYatra <span>
+            <p style="font-size: x-small;">“A journey of flavors, one bite at a time.”</p>
+          </span></h2>
+
+        <button type="button" class="btn-close btn btn-warning" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-floating mb-2">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Name</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Email</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input type="number" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Mobile No</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Address</label>
+        </div>
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+            style="height: 80px"></textarea>
+          <label for="floatingTextarea2">Messages</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success w-25 fw-bold" data-bs-dismiss="modal">Reset</button>
+        <button type="button" class="btn btn-warning w-25 fw-bold">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

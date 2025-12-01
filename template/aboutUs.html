@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YumYatra</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #f5f7fa, #e4e7eb);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    
+        .card {
+            border: 1px solid #ced4da;
+            border-radius: 0.5rem;
+            padding: 2rem 1.5rem 2.5rem;
+            margin-top: 5rem;
+            position: relative;
+            overflow: visible;
+            box-shadow: 0 0 8px rgb(0 0 0 / 0.05);
+        }
+        .profile-pic {
+            position: absolute;
+            top: -3.25rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+            background: hsla(0, 0%, 94%, 0.586);
+        }
+        h3 {
+            margin-top: 4rem;
+            font-weight: 600;
+            font-size: 1.75rem;
+            text-align: center;
+        }
+        .role {
+            font-style: italic;
+            color: #6c757d;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+        p.description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #222;
+            margin-bottom: 2.25rem;
+        }
+        .social-icons {
+            text-align: center;
+            font-size: 0;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin: 0 0.3rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            line-height: 40px;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      color: #000;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 2px;
+      width: 100%;
+      height: 3px;
+      background-color: rgb(248, 82, 82);
+      transform: scaleX(0);
+      transition: transform 0.5s ease;
+      transform-origin: right;
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+
+    /* Footer Styles */
+    .footer {
+      background-color: #ffffffae;
+      color: black;
+      padding-top: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .footer h5 {
+      position: relative;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .footer h5::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: rgb(230, 230, 29);
+      border-radius: 3px;
+    }
+
+    .footer-links a {
+      display: block;
+      color: black;
+      text-decoration: none;
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: darkblue;
+      padding-left: 5px;
+    }
+
+    .contact-info p {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .contact-info i {
+      margin-right: 10px;
+      margin-top: 5px;
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      background: #3498db;
+      transform: translateY(-3px);
+    }
+
+    .newsletter-form {
+      display: flex;
+      margin-top: 20px;
+    }
+
+    .newsletter-form input {
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px 0 0 5px;
+      flex: 1;
+      outline: none;
+    }
+
+    .newsletter-form button {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+      background: #2980b9;
+    }
+
+    .copyright {
+      background: #f5f7fa;
+      padding: 20px 0;
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .copyright a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+
+    .back-to-top {
+      position: absolute;
+      right: 20px;
+      top: 260px;
+      background: white;
+      color: black;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .back-to-top:hover {
+      background: black;
+      color: white;
+      transform: translateY(-3px);
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header Start-->
+
+
+    <div class="row upper text-dark p-3" style="background-color: #FDFAF6;">
+      <div class="col-12 col-sm-6 text-center text-danger fs-5 mt-1 fw-bold"> “A journey of flavors, one bite at a time.”
+      </div>
+      <div class="col-12 col-sm-2 mt-3 fs-5"></div>
+      <div class="col-12 col-sm-4  fs-5">
+        <button type="button" class="btn btn-warning p-1 fw-bold mx-3" data-bs-target="#exampleModal">
+          <a href="registration.html" class="text-decoration-none w-50 text-dark"><i class="fa-solid fa-user-plus"></i> SIGN UP</a>
+        </button>
+        <button type="button" class="btn btn-warning w-25 p-1 fw-bold mx-3">
+          <a href="login.html" class="text-decoration-none text-dark"><i class="fa-solid fa-right-to-bracket"></i> LOGIN</a>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+          <a class="navbar-brand mx-2" href="#"><img src="images/YumYatra Logo_ A Journey of Flavors.png" alt=""
+              height="70px"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 ms-auto mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active mx-3 fw-bold" aria-current="page" href="home.html"><i class="fa-solid fa-house"></i> Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active mx-3 fw-bold" aria-current="page" href="category.html"><i class="fa-solid fa-layer-group"></i> Category</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active mx-3 fw-bold" aria-current="page" href="details.html"><i class="fa-solid fa-circle-info"></i> Details</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active mx-3 fw-bold" aria-current="page" href="aboutUs.html"><i class="fa-solid fa-eject"></i> About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active mx-3 fw-bold" aria-current="page" href="ContactUs.html"><i class="fa-regular fa-address-book"></i> Contact Us</a>
+              </li>
+
+            </ul>
+            <form class="d-flex">
+              <button type="button" class="btn btn-warning fw-bold mx-3" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                Enquiry
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+    <!-- Header end -->
+
+
+
+
+
+    <!-- About Section -->
+   
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 mt-4">
+            <img src="images/food10.jpg" class="img-fluid rounded shadow"
+              alt="Chef cooking" style="width: 400px; height: 400px;">
+          </div>
+          <div class="col-md-6 mt-4">
+            <h2 class="fw-bold text-danger">Who We Are❓</h2>
+            <p>
+              Welcome to <b>Food Blog & Recipe Sharing</b>, your trusted destination for delicious recipes,
+              food stories, and kitchen tips. We believe food is not just about eating—it’s about connecting people,
+              cultures, and traditions.
+            </p>
+            <p>
+              From mouth-watering Indian curries 🍛 to sweet French desserts 🥐, we cover a wide range of global
+              cuisines.
+              Our mission is to make cooking easy, fun, and inspiring for everyone.
+            </p>
+            <button class="btn btn-warning fw-bold" data-bs-toggle="modal" data-bs-target="#missionModal">Read Our
+              Mission</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mission Modal -->
+    <div class="modal fade" id="missionModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-warning">
+            <h5 class="modal-title">🌍 Our Mission</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <p>We aim to inspire people to cook at home, explore different cuisines, and discover the joy of healthy,
+              home-cooked meals.</p>
+            <p>Our community of food lovers, recipe creators, and home chefs is built on passion, creativity, and love
+              for food.</p>
+            <p>We also support sustainability 🌱 by promoting seasonal and locally sourced ingredients.</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-warning fw-bold" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    
+      <div class="container">
+        <h2 class="text-center text-danger fw-bold mt-4 mb-4">📖 Our Journey</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="alert alert-warning shadow-sm">
+              <h5>2015 - The Beginning</h5>
+              <p>Started as a small recipe sharing group on social media with just 50 members.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="alert alert-light shadow-sm">
+              <h5>2017 - First Blog Launch</h5>
+              <p>Launched our food blog and gained 10,000 monthly readers worldwide.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="alert alert-light shadow-sm">
+              <h5>2020 - Growing Community</h5>
+              <p>Expanded to 1M+ followers and collaborated with chefs & restaurants.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="alert alert-warning shadow-sm">
+              <h5>2025 - Today</h5>
+              <p>One of the leading online platforms for food blogging, recipes, and culinary inspiration.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="container">
+      <div class="row justify-content-center g-4">
+        <!-- Card 1 -->
+        <div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch">
+          <div class="card text-center position-relative">
+            <img src="images/Sandy.jpg" alt="" class="profile-pic" />
+            <h3 class="text-danger fw-bold">Rocky</h3>
+            <div class="role">Capitán</div>
+            <p class="description">Rocky loves to find ways to maximize potential - of people, of technology, of life.
+              His wife Lindsay started a food blog a few years ago and they decided to do just that - maximize its
+              potential. They hope to share what they've learned with other food bloggers here on Food Blogger Pro.
+              Brijes is a terrible chef.</p>
+            <div class="social-icons">
+              <a href="#" aria-label="Sandy Ostrom personal website or blog" class="bg-warning text-dark"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Sandy Ostrom Facebook profile" class="bg-warning text-dark"><i class="bi bi-facebook"></i></a>
+              <a href="#" aria-label="Sandy Ostrom Instagram profile" class="bg-warning text-dark"><i class="bi bi-instagram"></i></a>
+              <a href="#" aria-label="Sandy Ostrom Pinterest profile" class="bg-warning text-dark"><i class="bi bi-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch">
+          <div class="card text-center position-relative">
+            <img src="images/John.jpg" alt="" class="profile-pic" />
+            <h3 class="text-danger fw-bold">John</h3>
+            <div class="role">Capitán</div>
+            <p class="description">Dhru is a former elementary school teacher turned full-time food blogger. he
+              publishes content and engages with readers on his blog Pinch of Yum, and she and Brijesh use their
+              insights as a case study to teach the Food Blogger Pro community about what's happening in the food
+              blogging world.</p>
+            <div class="social-icons">
+              <a href="#" aria-label="Sandy Ostrom personal website or blog" class="bg-warning text-dark"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Sandy Ostrom Facebook profile" class="bg-warning text-dark"><i class="bi bi-facebook"></i></a>
+              <a href="#" aria-label="Sandy Ostrom Instagram profile" class="bg-warning text-dark"><i class="bi bi-instagram"></i></a>
+              <a href="#" aria-label="Sandy Ostrom Pinterest profile" class="bg-warning text-dark"><i class="bi bi-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch">
+          <div class="card text-center position-relative">
+            <img src="images/Julina.jpg" alt="" class="profile-pic" />
+            <h3 class="text-danger fw-bold">Sandy</h3>
+            <div class="role">Associate General Manager</div>
+            <p class="description">Emily is the Associate General Manager of Food Blogger Pro. You can find her managing
+              the podcast, coordinating Live Q&As, overseeing the membership, writing blog posts, and keeping Food
+              Blogger Pro running smoothly! She is based near San Francisco, CA, and loves bakeries, reading, and
+              wrangling her two young kiddos.</p>
+            <div class="social-icons">
+              <a href="#" aria-label="Sandy Ostrom personal website or blog" class="bg-warning text-dark"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Sandy Ostrom Facebook profile" class="bg-warning text-dark"><i class="bi bi-facebook"></i></a>
+              <a href="#" aria-label="Sandy Ostrom Instagram profile" class="bg-warning text-dark"><i class="bi bi-instagram"></i></a>
+              <a href="#" aria-label="Sandy Ostrom Pinterest profile" class="bg-warning text-dark"><i class="bi bi-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FAQ Section -->
+
+      <di class="container">
+        <h2 class="text-center text-danger fw-bold mt-4 mb-4">❓ Frequently Asked Questions</h2>
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button bg-warning" data-bs-toggle="collapse"
+                data-bs-target="#q1">Is your blog free to use?</button></h2>
+            <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes! All our recipes, tips, and articles are free for everyone.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed bg-transparent" data-bs-toggle="collapse"
+                data-bs-target="#q2">Do you take recipe submissions?</button></h2>
+            <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Absolutely! Anyone can submit their recipes through our contact form.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed bg-warning" data-bs-toggle="collapse"
+                data-bs-target="#q3">Can I collaborate with your team?</button></h2>
+            <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes, we welcome collaborations with chefs, brands, and content creators.</div>
+            </div>
+          </div>
+        </div>
+        <!-- Gallery -->
+
+
+          <div class="container m-0 p-0">
+            <h2 class="text-center text-danger fw-bold mb-4 mt-4">📸 Our Kitchen Moments</h2>
+            <marquee>
+              <div class="row">
+                <div class="col-sm-2"><img src="images/food2.jpg" class="img-fluid rounded-circle shadow" style="height: 150px; width: 150px;"></div>
+                <div class="col-sm-2"><img src="images/Food3.jpg" class="img-fluid rounded-circle shadow" style="height: 150px; width: 150px;"></div>
+                <div class="col-sm-2"><img src="images/food4.jpg" class="img-fluid rounded-circle shadow" style="height: 150px; width: 150px;"></div>
+                <div class="col-sm-2"><img src="images/food5.jpg" class="img-fluid rounded-circle shadow" style="height: 150px; width: 150px;"></div>
+                <div class="col-sm-2"><img src="images/food6.jpg" class="img-fluid rounded-circle shadow" style="height: 150px; width: 150px;"></div>
+                <div class="col-sm-2"><img src="images/food7.jpg" class="img-fluid rounded-circle shadow" style="height: 150px; width: 150px;"></div>
+                
+            </marquee>
+          </div>
+
+
+
+
+      <!-- Footer Section -->
+
+      <div class="container m-0 p-0 mt-5">
+        <div class="row">
+          <footer class="footer">
+            <a href="#" class="back-to-top">
+              <i class="bi bi-arrow-up"></i>
+            </a>
+            <div class="container">
+              <div class="row g-1">
+                <div class="col-lg-3 col-md-6">
+                  <h5>About Company</h5>
+                  <p>“Yum Yatra is your perfect food companion, bringing together delicious recipes, cooking tips, and foodie experiences. From traditional flavors to modern delights, we make your food journey simple, fun, and flavorful.”</p>
+                  <div class="social-icons mt-4">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-twitter"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                    <a href="#"><i class="bi bi-youtube"></i></a>
+                  </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                  <h5>Quick Links</h5>
+                  <div class="footer-links">
+                    <a href="#"><i class="bi bi-chevron-right me-2"></i> Home</a>
+                    <a href="#"><i class="bi bi-chevron-right me-2"></i> About Us</a>
+                    <a href="#"><i class="bi bi-chevron-right me-2"></i> Category</a>
+                    <a href="#"><i class="bi bi-chevron-right me-2"></i> Details</a>
+                    <a href="#"><i class="bi bi-chevron-right me-2"></i> Contact</a>
+                  </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                  <h5>Contact Us</h5>
+                  <div class="contact-info">
+                    <p>
+                      <i class="bi bi-geo-alt text-primary"></i>
+                      <span>123 Business Avenue, Suite 100<br>San Francisco, CA 94107</span>
+                    </p>
+                    <p>
+                      <i class="bi bi-telephone text-primary"></i>
+                      <span>+1 (555) 123-4567</span>
+                    </p>
+                    <p>
+                      <i class="bi bi-envelope text-primary"></i>
+                      <span>info@company.com</span>
+                    </p>
+
+                  </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                  <h5>Newsletter</h5>
+                  <p>Subscribe to our newsletter for the latest updates and offers.</p>
+                  <div class="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit"><i class="bi bi-send"></i></button>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12 m-0 p-0">
+                  <div class="copyright">
+                    <p class="mb-0">© 2025 YumYatra. All Rights Reserved. | Designed with <i
+                        class="bi bi-heart-fill text-danger"></i> by Our Team</p>
+                    <p class="mb-0 mt-2">
+                      <a href="#">Privacy Policy</a> |
+                      <a href="#">Terms of Service</a> |
+                      <a href="developer.html">Developer</a>
+
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="exampleModalLabel">Enquiry for YumYatra <span>
+            <p style="font-size: x-small;">“A journey of flavors, one bite at a time.”</p>
+          </span></h2>
+
+        <button type="button" class="btn-close btn btn-warning" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-floating mb-2">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Name</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Email</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input type="number" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Mobile No</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Address</label>
+        </div>
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+            style="height: 80px"></textarea>
+          <label for="floatingTextarea2">Messages</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success w-25 fw-bold" data-bs-dismiss="modal">Reset</button>
+        <button type="button" class="btn btn-warning w-25 fw-bold">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
